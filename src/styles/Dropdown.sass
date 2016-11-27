@@ -1,0 +1,67 @@
+.Dropdown
+  padding: 2rem
+  width: 30rem
+  display: inline-block
+  position: relative
+  h5
+    margin-bottom: 1rem
+
+.Dropdown-list-box
+  border: 1px solid gray
+  border-top: 0
+  position: absolute
+  max-height: 30rem
+  overflow-y: scroll
+  width: 20rem
+
+.Dropdown-list, .Dropdown-list--selected
+  cursor: pointer
+  border: 1px solid $Blue
+  color: rgb(169, 169, 169)
+  display: inline-block
+  font-size: 1.6rem
+  padding: 1.0rem
+  width: 20rem
+  z-index: 100
+
+.Dropdown-list--selected
+  border: 1px solid $Green
+  color: $White
+
+.Dropdown-list-arrow, .Dropdown-list-arrow--up
+  content: ''
+  border-color: $White
+  border-style: solid
+  border-width: 0px 0px .2rem .2rem
+  float: right
+  height: 2.2rem
+  margin: 0
+  position: relative
+  top: -0.6rem
+  transform: rotate(-45deg)
+  width: 2.2rem
+
+.Dropdown-list-arrow--up
+  top: 0.6rem
+  transform: rotate(135deg)
+
+
+.Dropdown-list-item
+  cursor: pointer
+  border-bottom: 1px solid gray
+  background-color: $Black
+  color: $White
+  font-size: 1.6rem
+  padding: 1.0rem .75rem
+  width: 200px
+  &:hover
+    background-color: $Blue
+  &:last-child
+    border-bottom: 0
+
+.Dropdown-clear
+  cursor: pointer
+  color: $Red
+  display: inline-block
+  font-size: 1.6rem
+  padding: 1rem

@@ -1,0 +1,48 @@
+button
+  background-color: transparent
+  border: 2px solid $Blue
+  border-radius: 0.3rem
+  color: $Blue
+  cursor: pointer
+  padding: 2.0rem
+  font-size: 1.6rem
+  line-height: 1.6rem
+  margin: 1.0rem
+  transition: all .1s linear
+  &:hover
+    border: 2px solid $Blue
+    background-color: $Blue
+    color: $White
+  &:active
+    border: 2px solid darken($Blue, 20%)
+    background-color: darken($Blue, 20%)
+  &:focus
+    outline: transparent
+
+.Cancel
+  border: 2px solid $Red
+  color: $Red
+  &:hover
+    border: 2px solid $Red
+    background-color: $Red
+  &:active
+    border: 2px solid darken($Red, 20%)
+    background-color: darken($Red, 20%)
+
+.Submit
+  border: 2px solid $Green
+  color: $Green
+  &:hover
+    border: 2px solid $Green
+    background-color: $Green
+  &:active
+    border: 2px solid darken($Green, 20%)
+    background-color: darken($Green, 20%)
+  
+
+.container
+  display: flex
+  justify-content: flex-start
+  align-items: flex-end
+  flex-wrap: wrap
+  width: 100%

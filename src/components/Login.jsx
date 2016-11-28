@@ -23,10 +23,8 @@ class Login extends Component {
     return (
       <div className="Login">
         <h3>Welcome to Cursillo DB Manager</h3>
-        
-        <div className="container">
-          <div className="Login-cross" />
-        </div>
+
+        <div className="Login-cross" />
 
         <div className="container">
           <TextInput title="Username" ref="username" />

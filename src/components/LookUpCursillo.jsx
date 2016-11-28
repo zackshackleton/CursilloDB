@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonRow from './ButtonRow';
 import Dropdown from './Dropdown';
 import TextInput from './TextInput';
-import Results from './Results';
+import CursilloResults from './CursilloResults';
 
 class LookUpCursillo extends Component {
   constructor () {
@@ -50,13 +50,13 @@ class LookUpCursillo extends Component {
   }
 
   cancelClickHandler () {
-
+    this.props.updateCurrentPage('Main')
   }
 
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <Results />
+    return <CursilloResults updateModal={this.props.updateModal} />
   }
 
   render () {
@@ -91,7 +91,9 @@ class LookUpCursillo extends Component {
                      onCancel={this.cancelClickHandler} />
         </div>
 
-        {this.renderResults()}
+        <div className="container">
+          {this.renderResults()}
+        </div>
       </div>
     );
   }

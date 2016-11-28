@@ -48,7 +48,7 @@ class Cursillo extends Component {
   }
 
   cancelClickHandler () {
-
+    this.props.updateCurrentPage('Main')
   }
 
   render () {

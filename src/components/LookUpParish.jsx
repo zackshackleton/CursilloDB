@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonRow from './ButtonRow';
 import Dropdown from './Dropdown';
 import TextInput from './TextInput';
-import Results from './Results';
+import ParishResults from './ParishResults';
 
 class LookUpParish extends Component {
   constructor () {
@@ -46,13 +46,13 @@ class LookUpParish extends Component {
   }
 
   cancelClickHandler () {
-
+    this.props.updateCurrentPage('Main')
   }
 
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <Results />
+    return <ParishResults />
   }
 
   render () {

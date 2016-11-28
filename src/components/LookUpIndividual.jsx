@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ButtonRow from './ButtonRow';
 import Dropdown from './Dropdown';
 import TextInput from './TextInput';
-import Results from './Results';
+import IndividualResults from './IndividualResults';
 
 class LookUpIndividual extends Component {
   constructor () {
@@ -45,7 +45,8 @@ class LookUpIndividual extends Component {
         spouseAttended: this.refs.individualSpouseAttended.state.value,
         spouseID: this.refs.individualSpouseID.state.value,
         parishID: this.refs.individualParishID.state.value,
-        Living: this.refs.individualLiving.state.value,
+        living: this.refs.individualLiving.state.value,
+        role: this.refs.individualRole.state.value,
       },
       success: this.successCallback,
       error: this.errorCallback
@@ -63,13 +64,13 @@ class LookUpIndividual extends Component {
   }
 
   cancelClickHandler () {
-
+    this.props.updateCurrentPage('Main')
   }
 
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <Results />
+    return <IndividualResults />
   }
 
   render () {
@@ -123,6 +124,7 @@ class LookUpIndividual extends Component {
           <div>
             <TextInput title="Parish ID" ref="individualParishID" />
             <Dropdown  title="Living" values={["True", "False"]} ref="individualLiving" />
+            <Dropdown  title="Role" values={["Family", "Finance", "General", "Kitchen", "Landscape", "Prayer", "Sanitation", "Security", "Water"]} ref="individualRole" />
           </div>
 
           <ButtonRow onSubmit={this.submitClickHandler}
@@ -136,3 +138,4 @@ class LookUpIndividual extends Component {
 }
 
 export default LookUpIndividual;
+

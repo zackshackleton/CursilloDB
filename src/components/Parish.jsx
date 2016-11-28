@@ -43,7 +43,7 @@ class Parish extends Component {
   }
 
   cancelClickHandler () {
-
+    this.props.updateCurrentPage('Main')
   }
 
   render () {

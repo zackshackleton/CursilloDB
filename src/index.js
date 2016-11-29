@@ -11,7 +11,7 @@ import './styles/index.sass';
 
 const initialState = {
   infoReducer: {
-    result: {}
+    result: []
   },
 };
 

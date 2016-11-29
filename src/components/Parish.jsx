@@ -35,7 +35,7 @@ class Parish extends Component {
   }
 
   successCallback () {
-    console.log("Success");
+    this.props.updateCurrentPage('Main');
   }
 
   errorCallback () {

@@ -21,32 +21,28 @@ class LookUpIndividual extends Component {
   submitClickHandler () {
     const payload = {
       data: {
-        cursilloID: this.refs.cursilloID.state.value,
-        id: this.refs.individualID.state.value,
-        gender: this.refs.individualGender.state.value,
-        active: this.refs.individualActive.state.value,
-        firstName: this.refs.individualFirst.state.value,
-        preferred: this.refs.individualPreferred.state.value,
-        lastName: this.refs.individualLast.state.value,
-        month: this.refs.individualMonth.state.value,
-        day: this.refs.individualDay.state.value,
-        year: this.refs.individualYear.state.value,
-        street: this.refs.individualStreet.state.value,
-        city: this.refs.individualCity.state.value,
-        state: this.refs.individualState.state.value,
-        zip: this.refs.individualZip.state.value,
-        phone: this.refs.individualPhone.state.value,
-        email: this.refs.individualEmail.state.value,
-        jobTitle: this.refs.individualJobTitle.state.value,
-        workPhone: this.refs.individualWorkPhone.state.value,
-        maritalStatus: this.refs.individualMaritalStatus.state.value,
-        spouseFirst: this.refs.individualSpouseFirst.state.value,
-        spouseLast: this.refs.individualSpouseLast.state.value,
-        spouseAttended: this.refs.individualSpouseAttended.state.value,
-        spouseID: this.refs.individualSpouseID.state.value,
-        parishID: this.refs.individualParishID.state.value,
-        living: this.refs.individualLiving.state.value,
-        role: this.refs.individualRole.state.value,
+        cursilloID: (this.refs.cursilloID.state.value === '') ? '%' : this.refs.cursilloID.state.value,
+        id: (this.refs.individualID.state.value === '') ? '%' : this.refs.individualID.state.value,
+        gender: (this.refs.individualGender.state.value === 'Select...') ? '%' : this.refs.individualGender.state.value,
+        firstName: (this.refs.individualFirst.state.value === '') ? '%' : this.refs.individualFirst.state.value,
+        preferred: (this.refs.individualPreferred.state.value === '') ? '%' : this.refs.individualPreferred.state.value,
+        lastName: (this.refs.individualLast.state.value === '') ? '%' : this.refs.individualLast.state.value,
+        month: (this.refs.individualMonth.state.value === '') ? '%' : this.refs.individualMonth.state.value,
+        day: (this.refs.individualDay.state.value === '') ? '%' : this.refs.individualDay.state.value,
+        year: (this.refs.individualYear.state.value === '') ? '%' : this.refs.individualYear.state.value,
+        street: (this.refs.individualStreet.state.value === '') ? '%' : this.refs.individualStreet.state.value,
+        city: (this.refs.individualCity.state.value === '') ? '%' : this.refs.individualCity.state.value,
+        state: (this.refs.individualState.state.value === 'State') ? '%' : this.refs.individualState.state.value,
+        zip: (this.refs.individualZip.state.value === '') ? '%' : this.refs.individualZip.state.value,
+        phone: (this.refs.individualPhone.state.value === '') ? '%' : this.refs.individualPhone.state.value,
+        email: (this.refs.individualEmail.state.value === '') ? '%' : this.refs.individualEmail.state.value,
+        jobTitle: (this.refs.individualJobTitle.state.value === '') ? '%' : this.refs.individualJobTitle.state.value,
+        workPhone: (this.refs.individualWorkPhone.state.value === '') ? '%' : this.refs.individualWorkPhone.state.value,
+        spouseFirst: (this.refs.individualSpouseFirst.state.value === '') ? '%' : this.refs.individualSpouseFirst.state.value,
+        spouseLast: (this.refs.individualSpouseLast.state.value === '') ? '%' : this.refs.individualSpouseLast.state.value,
+        spouseID: (this.refs.individualSpouseID.state.value === '') ? '%' : this.refs.individualSpouseID.state.value,
+        parishID: (this.refs.individualParishID.state.value === '') ? '%' : this.refs.individualParishID.state.value,
+        role: (this.refs.individualRole.state.value === 'Select...') ? '%' : this.refs.individualRole.state.value,
       },
       success: this.successCallback,
       error: this.errorCallback
@@ -70,7 +66,7 @@ class LookUpIndividual extends Component {
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <IndividualResults />
+    return <IndividualResults {...this.props} />
   }
 
   render () {
@@ -82,7 +78,6 @@ class LookUpIndividual extends Component {
           <TextInput title="Cursillo ID" ref="cursilloID" />
           <TextInput title="Individual ID" ref="individualID" />
           <Dropdown  title="Gender" values={["Male", "Female"]} ref="individualGender" />
-          <Dropdown  title="Active" values={["True", "False"]} ref="individualActive" />
 
           <div>
             <TextInput title="Name" placeholder="First Name" ref="individualFirst" />
@@ -114,16 +109,13 @@ class LookUpIndividual extends Component {
           </div>
 
           <div>
-            <Dropdown  title="Marital Status" values={["Single", "Married"]} ref="individualMaritalStatus" />
             <TextInput title="Spouse Name" placeholder="First Name" ref="individualSpouseFirst" />
             <TextInput showTitle={false} placeholder="Last Name" ref="individualSpouseLast" />
-            <Dropdown  title="Spouse Attended?" values={["True", "False"]}  ref="individualSpouseAttended" />
             <TextInput title="Spouse ID"  ref="individualSpouseID"/>
           </div>
 
           <div>
             <TextInput title="Parish ID" ref="individualParishID" />
-            <Dropdown  title="Living" values={["True", "False"]} ref="individualLiving" />
             <Dropdown  title="Role" values={["Family", "Finance", "General", "Kitchen", "Landscape", "Prayer", "Sanitation", "Security", "Water"]} ref="individualRole" />
           </div>
 

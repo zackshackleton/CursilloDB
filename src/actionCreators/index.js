@@ -5,43 +5,70 @@ const userService = new UserService();
 
 const createIndividual = (payload) => {
   return (dispatch) => {
-    userService.createIndividual(payload);
-    dispatch({ type: actionTypes.CREATE_INDIVIDUAL, payload });
+    userService.createIndividual(payload).then((response) => {
+      payload.success();
+    })
   }
 };
 
 const createCursillo = (payload) => {
   return (dispatch) => {
-    userService.createCursillo(payload);
-    dispatch({ type: actionTypes.CREATE_CURSILLO, payload });
+    userService.createCursillo(payload).then((response) => {
+      payload.success();
+    })
   }
 };
 
 const createParish = (payload) => {
   return (dispatch) => {
-    userService.createParish(payload);
-    dispatch({ type: actionTypes.CREATE_PARISH, payload });
+    userService.createParish(payload).then((response) => {
+      payload.success();
+    })
   }
 };
 
 const lookUpIndividual = (payload) => {
   return (dispatch) => {
-    userService.lookUpIndividual(payload);
-    dispatch({ type: actionTypes.LOOKUP_INDIVIDUAL, payload });
+    userService.lookUpIndividual(payload).then((response) => {
+      dispatch({ type: actionTypes.LOOKUP_INDIVIDUAL, payload: response });
+      payload.success();
+    })
   }
 };
 
 const lookUpCursillo = (payload) => {
   return (dispatch) => {
-    userService.lookUpCursillo(payload);
-    dispatch({ type: actionTypes.LOOKUP_CURSILLO, payload });
+    userService.lookUpCursillo(payload).then((response) => {
+      dispatch({ type: actionTypes.LOOKUP_CURSILLO, payload: response });
+      payload.success();
+    })
   }
 };
 
 const lookUpParish = (payload) => {
   return (dispatch) => {
-    userService.lookUpParish(payload);
-    dispatch({ type: actionTypes.LOOKUP_PARISH, payload });
+    userService.lookUpParish(payload).then((response) => {
+      dispatch({ type: actionTypes.LOOKUP_PARISH, payload: response });
+      payload.success();
+    })
+  }
+};
+
+const removeIndividual = (payload) => {
+  return (dispatch) => {
+    userService.removeIndividual(payload);
+  }
+};
+
+const removeCursillo = (payload) => {
+  return (dispatch) => {
+    userService.removeCursillo(payload);
+  }
+};
+
+const removeParish = (payload) => {
+  return (dispatch) => {
+    userService.removeParish(payload);
   }
 };
 
@@ -52,7 +79,10 @@ const actionCreators = {
   createParish,
   lookUpIndividual,
   lookUpCursillo,
-  lookUpParish
+  lookUpParish,
+  removeIndividual,
+  removeCursillo,
+  removeParish,
 };
 
 export { actionCreators };

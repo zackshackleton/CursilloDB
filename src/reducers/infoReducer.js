@@ -11,14 +11,20 @@ const infoReducer = (state = {}, action) => {
     case actionTypes.CREATE_PARISH:
       return Object.assign({}, state, {});
 
-    case actionTypes.LOOKUP_INDIVIUAL:
-      return Object.assign({}, state, {});
+    case actionTypes.LOOKUP_INDIVIDUAL:
+      return Object.assign({}, state, {
+        result: action.payload.data.individuals
+      });
 
     case actionTypes.LOOKUP_CURSILLO:
-      return Object.assign({}, state, {});
+      return Object.assign({}, state, {
+        result: action.payload.data.cursillos
+      });
 
     case actionTypes.LOOKUP_PARISH:
-      return Object.assign({}, state, {});
+      return Object.assign({}, state, {
+        result: action.payload.data.parishs
+      });
 
     default:
       return state;

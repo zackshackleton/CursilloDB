@@ -21,14 +21,14 @@ class LookUpParish extends Component {
   submitClickHandler () {
     const payload = {
       data: {
-        id: this.refs.parishID.state.value,
-        name: this.refs.parishName.state.value,
-        street: this.refs.parishStreet.state.value,
-        city: this.refs.parishCity.state.value,
-        state: this.refs.parishState.state.value,
-        zip: this.refs.parishZip.state.value,
-        phone: this.refs.parishPhone.state.value,
-        sponsorName: this.refs.parishSponsorName.state.value,
+        id: (this.refs.parishID.state.value === '') ? '%' : this.refs.parishID.state.value,
+        name: (this.refs.parishName.state.value === '') ? '%' : this.refs.parishName.state.value,
+        street: (this.refs.parishStreet.state.value === '') ? '%' : this.refs.parishStreet.state.value,
+        city: (this.refs.parishCity.state.value === '') ? '%' : this.refs.parishCity.state.value,
+        state: (this.refs.parishState.state.value === 'State') ? '%' : this.refs.parishState.state.value,
+        zip: (this.refs.parishZip.state.value === '') ? '%' : this.refs.parishZip.state.value,
+        phone: (this.refs.parishPhone.state.value === '') ? '%' : this.refs.parishPhone.state.value,
+        sponsorName: (this.refs.parishSponsorName.state.value === '') ? '%' : this.refs.parishSponsorName.state.value,
       },
       success: this.successCallback,
       error: this.errorCallback
@@ -52,7 +52,7 @@ class LookUpParish extends Component {
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <ParishResults />
+    return <ParishResults {...this.props}/>
   }
 
   render () {

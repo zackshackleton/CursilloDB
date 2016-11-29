@@ -1,33 +1,31 @@
 import React from 'react';
 
 const IndividualResults = (props) => {
+  const removeIndividual = (ID) => {
+    const payload = {
+      data: { 
+        id: ID 
+      }
+    }
+
+    props.actions.removeIndividual(payload);
+  }
+
   const renderRows = () => {
-    return (
-      <div>
-      <div className="IndividualResults-table-row">
-        <div className="IndividualResults-table-row-column">Individual ID</div>
-        <div className="IndividualResults-table-row-column">Name</div>
-        <div className="IndividualResults-table-row-column">Gender</div>
-        <div className="IndividualResults-table-row-column">Phone</div>
-        <div className="IndividualResults-table-row-column">Address</div>
-        <div className="IndividualResults-table-row-column">
-          <button className="Cancel">Delete</button>
+    return (props.info.result).map((row, index) => {
+      return (
+        <div className="IndividualResults-table-row" key={index}>
+          <div className="IndividualResults-table-row-column">{row.INDIVIDUAL_ID}</div>
+          <div className="IndividualResults-table-row-column">{row.FIRST_NAME + ' ' + row.LAST_NAME}</div>
+          <div className="IndividualResults-table-row-column">{row.GENDER}</div>
+          <div className="IndividualResults-table-row-column">{row.PHONE_NUMBER}</div>
+          <div className="IndividualResults-table-row-column">{row.STREET + ' ' + row.CITY + ', ' + row.STATE_NAME}</div>
+          <div className="IndividualResults-table-row-column">
+            <button className="Cancel" onClick={() => {removeParish(row.INDIVIDUAL_ID)}}>Delete</button>
+          </div>
         </div>
-      </div>
-
-      <div className="IndividualResults-table-row">
-        <div className="IndividualResults-table-row-column">Individual ID</div>
-        <div className="IndividualResults-table-row-column">Name</div>
-        <div className="IndividualResults-table-row-column">Gender</div>
-        <div className="IndividualResults-table-row-column">Phone</div>
-        <div className="IndividualResults-table-row-column">Address</div>
-        <div className="IndividualResults-table-row-column">
-          <button className="Cancel">Delete</button>
-        </div>
-      </div>
-
-      </div>
-    );
+      );
+    });
   }
 
   return (

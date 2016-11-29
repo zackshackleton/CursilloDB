@@ -21,18 +21,18 @@ class LookUpCursillo extends Component {
   submitClickHandler () {
     const payload = {
       data: {
-        id: this.refs.cursilloID.state.value,
-        gender: this.refs.cursilloGender.state.value,
-        startMonth: this.refs.cursilloStartMonth.state.value,
-        startDay: this.refs.cursilloStartDay.state.value,
-        startYear: this.refs.cursilloStartYear.state.value,
-        endMonth: this.refs.cursilloEndMonth.state.value,
-        endDay: this.refs.cursilloEndDay.state.value,
-        endYear: this.refs.cursilloEndYear.state.value,
-        street: this.refs.cursilloStreet.state.value,
-        city: this.refs.cursilloCity.state.value,
-        state: this.refs.cursilloState.state.value,
-        zip: this.refs.cursilloZip.state.value,
+        id: (this.refs.cursilloID.state.value === '') ? '%' : this.refs.cursilloID.state.value,
+        gender: (this.refs.cursilloGender.state.value === 'Select...') ? '%' : this.refs.cursilloGender.state.value,
+        startMonth: (this.refs.cursilloStartMonth.state.value === '') ? '%' : this.refs.cursilloStartMonth.state.value,
+        startDay: (this.refs.cursilloStartDay.state.value === '') ? '%' : this.refs.cursilloStartDay.state.value,
+        startYear: (this.refs.cursilloStartYear.state.value === '') ? '%' : this.refs.cursilloStartYear.state.value,
+        endMonth: (this.refs.cursilloEndMonth.state.value === '') ? '%' : this.refs.cursilloEndMonth.state.value,
+        endDay: (this.refs.cursilloEndDay.state.value === '') ? '%' : this.refs.cursilloEndDay.state.value,
+        endYear: (this.refs.cursilloEndYear.state.value === '') ? '%' : this.refs.cursilloEndYear.state.value,
+        street: (this.refs.cursilloStreet.state.value === '') ? '%' : this.refs.cursilloStreet.state.value,
+        city: (this.refs.cursilloCity.state.value === '') ? '%' : this.refs.cursilloCity.state.value,
+        state: (this.refs.cursilloState.state.value === 'State') ? '%' : this.refs.cursilloState.state.value,
+        zip: (this.refs.cursilloZip.state.value === '') ? '%' : this.refs.cursilloZip.state.value,
       },
       success: this.successCallback,
       error: this.errorCallback
@@ -56,7 +56,9 @@ class LookUpCursillo extends Component {
   renderResults () {
     if (this.state.dataReady === false) return;
 
-    return <CursilloResults updateModal={this.props.updateModal} />
+    return <CursilloResults info={this.props.info}
+                            removeCursillo={this.props.actions.removeCursillo}
+                            updateModal={this.props.updateModal} />
   }
 
   render () {

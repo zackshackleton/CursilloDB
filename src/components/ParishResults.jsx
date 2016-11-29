@@ -1,33 +1,31 @@
 import React from 'react';
 
 const ParishResults = (props) => {
+  const removeParish = (ID) => {
+    const payload = {
+      data: { 
+        id: ID 
+      }
+    }
+
+    props.actions.removeParish(payload);
+  }
+
   const renderRows = () => {
-    return (
-      <div>
-      <div className="ParishResults-table-row">
-        <div className="ParishResults-table-row-column">Parish ID</div>
-        <div className="ParishResults-table-row-column">Name</div>
-        <div className="ParishResults-table-row-column">Sponsor Name</div>
-        <div className="ParishResults-table-row-column">Phone</div>
-        <div className="ParishResults-table-row-column">Address</div>
-        <div className="ParishResults-table-row-column">
-          <button className="Cancel">Delete</button>
+    return (props.info.result).map((row, index) => {
+      return (
+        <div className="ParishResults-table-row" key={index}>
+          <div className="ParishResults-table-row-column">{row.PARISH_ID}</div>
+          <div className="ParishResults-table-row-column">{row.PARISH_NAME}</div>
+          <div className="ParishResults-table-row-column">{row.SPONSOR_NAME}</div>
+          <div className="ParishResults-table-row-column">{row.PHONE_NUMBER}</div>
+          <div className="ParishResults-table-row-column">{row.STREET + ' ' + row.CITY + ', ' + row.STATE_NAME}</div>
+          <div className="ParishResults-table-row-column">
+            <button className="Cancel" onClick={() => {removeParish(row.PARISH_ID)}}>Delete</button>
+          </div>
         </div>
-      </div>
-
-      <div className="ParishResults-table-row">
-        <div className="ParishResults-table-row-column">Parish ID</div>
-        <div className="ParishResults-table-row-column">Name</div>
-        <div className="ParishResults-table-row-column">Sponsor Name</div>
-        <div className="ParishResults-table-row-column">Phone</div>
-        <div className="ParishResults-table-row-column">Address</div>
-        <div className="ParishResults-table-row-column">
-          <button className="Cancel">Delete</button>
-        </div>
-      </div>
-
-      </div>
-    );
+      );
+    })
   }
 
   return (

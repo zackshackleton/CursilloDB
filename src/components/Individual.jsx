@@ -17,10 +17,9 @@ class Individual extends Component {
   submitClickHandler () {
     const payload = {
       data: {
-        cursilloID: this.refs.cursilloID.state.value,
-        id: this.refs.individualID.state.value,
+        id: Number(this.refs.individualID.state.value),
         gender: this.refs.individualGender.state.value,
-        active: this.refs.individualActive.state.value,
+        active: (this.refs.individualActive.state.value === 'Active') ? 1 : 0,
         firstName: this.refs.individualFirst.state.value,
         preferred: this.refs.individualPreferred.state.value,
         lastName: this.refs.individualLast.state.value,
@@ -35,15 +34,15 @@ class Individual extends Component {
         email: this.refs.individualEmail.state.value,
         jobTitle: this.refs.individualJobTitle.state.value,
         workPhone: this.refs.individualWorkPhone.state.value,
-        maritalStatus: this.refs.individualMaritalStatus.state.value,
+        maritalStatus: (this.refs.individualMaritalStatus.state.value === 'Married') ? 1 : 0,
         spouseFirst: this.refs.individualSpouseFirst.state.value,
         spouseLast: this.refs.individualSpouseLast.state.value,
-        spouseAttended: this.refs.individualSpouseAttended.state.value,
-        spouseID: this.refs.individualSpouseID.state.value,
-        parishID: this.refs.individualParishID.state.value,
+        spouseAttended: (this.refs.individualSpouseAttended.state.value === 'True') ? 1 : 0,
+        spouseID: Number(this.refs.individualSpouseID.state.value),
+        parishID: Number(this.refs.individualParishID.state.value),
         living: this.refs.individualLiving.state.value,
         role: this.refs.individualRole.state.value,
-        talkID: this.refs.individualTalkID.state.value,
+        talkID: Number(this.refs.individualTalkID.state.value),
         talkNumber: this.refs.individualTalkNumber.state.value,
         talkDescription: this.refs.individualTalkDescription.state.value,
       },
@@ -55,7 +54,7 @@ class Individual extends Component {
   }
   
   successCallback () {
-    console.log("Success");
+    this.props.updateCurrentPage('Main');
   }
 
   errorCallback () {

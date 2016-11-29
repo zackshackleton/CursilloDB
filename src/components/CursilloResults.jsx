@@ -3,38 +3,37 @@ import React, { Component, PropTypes } from 'react';
 class CursilloResults extends Component {
   constructor () {
     super ();
+
+    this.removeCursillo = this.removeCursillo.bind(this);
+  }
+
+  removeCursillo (ID) {
+    const payload = {
+      data: { 
+        id: ID 
+      }
+    }
+    this.props.removeCursillo(payload);
   }
 
   renderRows () {
-    return (
-      <div>
-      <div className="CursilloResults-table-row">
-        <div className="CursilloResults-table-row-column">Cursillo ID</div>
-        <div className="CursilloResults-table-row-column">Gender</div>
-        <div className="CursilloResults-table-row-column">Start Date</div>
-        <div className="CursilloResults-table-row-column">End Date</div>
-        <div className="CursilloResults-table-row-column">Address</div>
-        <div className="CursilloResults-table-row-column">
-          <button onClick={() => {this.props.updateModal(true)}}>Add Individual</button>
-          <button className="Cancel" onClick={() => {this.props.updateModal(null)}}>Delete</button>
+    return (this.props.info.result).map((row, index) => {
+      return (
+        <div className="CursilloResults-table-row" key={index}>
+          <div className="CursilloResults-table-row-column">{row.CURSILLO_ID}</div>
+          <div className="CursilloResults-table-row-column">{row.GENDER}</div>
+          <div className="CursilloResults-table-row-column">{row.START_DATE}</div>
+          <div className="CursilloResults-table-row-column">{row.END_DATE}</div>
+          <div className="CursilloResults-table-row-column">{row.STREET + ' ' + row.CITY + ', ' + row.STATE_NAME}</div>
+          <div className="CursilloResults-table-row-column">
+            <button onClick={() => {this.props.updateModal(true)}}>Add Individual</button>
+            <button className="Cancel" onClick={() => {this.removeCursillo(row.CURSILLO_ID)}}>Delete</button>
+          </div>
         </div>
-      </div>
-
-      <div className="CursilloResults-table-row">
-        <div className="CursilloResults-table-row-column">Cursillo ID</div>
-        <div className="CursilloResults-table-row-column">Gender</div>
-        <div className="CursilloResults-table-row-column">Start Date</div>
-        <div className="CursilloResults-table-row-column">End Date</div>
-        <div className="CursilloResults-table-row-column">Address</div>
-        <div className="CursilloResults-table-row-column">
-          <button onClick={() => {this.props.updateModal(true)}}>Add Individual</button>
-          <button className="Cancel" onClick={() => {this.props.updateModal(null)}}>Delete</button>
-        </div>
-      </div>
-
-      </div>
-    );
+      )
+    })
   }
+      
 
   render () {
     return (
